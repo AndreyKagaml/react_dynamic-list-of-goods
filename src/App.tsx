@@ -11,7 +11,10 @@ export const App: React.FC = () => {
   const [goods, setGoods] = useState<Good[]>([]);
 
   const handleClick = (getFunction: () => Promise<Good[]>) => () =>
-    getFunction().then((response: Good[]) => setGoods(response));
+    getFunction()
+      .then((response: Good[]) => setGoods(response))
+      // eslint-disable-next-line
+      .catch(error => console.error(error.message));
 
   return (
     <div className="App">
