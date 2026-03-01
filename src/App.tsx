@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useState } from 'react';
 import './App.scss';
 import { GoodsList } from './GoodsList';
@@ -7,7 +8,7 @@ import { Good } from './types/Good';
 // or
 // import * as goodsAPI from './api/goods';
 
-export const App: React.FC = () => {
+export const App: React.FC = React.memo(() => {
   const [goods, setGoods] = useState<Good[]>([]);
 
   const handleClick = (getFunction: () => Promise<Good[]>) => () =>
@@ -39,4 +40,4 @@ export const App: React.FC = () => {
       <GoodsList goods={goods} />
     </div>
   );
-};
+});
